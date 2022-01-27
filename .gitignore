@@ -9,6 +9,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+./hooks/useFetch.ts
 
 # macOS
 .DS_Store
