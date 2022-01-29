@@ -14,14 +14,14 @@ export default {
   yellow: "hsl(49, 86%, 57%)",
   light: {
     text: white,
-    background: blue100,
+    background: blue50,
     tint: blue25,
     tabIconDefault: gray,
     tabIconSelected: blue25,
   },
   dark: {
     text: white,
-    background: blue100,
+    background: blue50,
     tint: blue25,
     tabIconDefault: gray,
     tabIconSelected: blue25,

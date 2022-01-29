@@ -1,15 +1,12 @@
-import React, { ReactNode, useEffect, useState } from "react";
-import { StyleSheet, TextInput } from "react-native";
+import React, { useEffect, useState } from "react";
+import { ScrollView, StyleSheet, TextInput } from "react-native";
 import { View } from "../components/Themed";
 import Colors from "../constants/Colors";
 import Layout from "../constants/Layout";
 import { BtnPressable } from "../components/BtnPressable";
 import { Movie } from "../types";
 import { useFetch } from "../hooks/useFetch";
-
-type SearchProps = {
-  children: ReactNode;
-};
+import { MovieItem } from "../components/MovieItem";
 
 export const HomeView = () => {
   const [searchValue, setSearchValue] = useState<string | undefined>(undefined);
@@ -31,8 +28,6 @@ export const HomeView = () => {
     }
   }
 
-  console.log(movies);
-
   return (
     <View style={styles.container}>
       <TextInput
@@ -42,6 +37,11 @@ export const HomeView = () => {
         placeholder={"Entrez le titre d'un film"}
       />
       <BtnPressable handleSearch={handleSearch} />
+      <ScrollView contentContainerStyle={styles.wrapperMovies}>
+        {movies.map((movie) => (
+          <MovieItem key={movie.id} movie={movie} />
+        ))}
+      </ScrollView>
     </View>
   );
 };
@@ -49,6 +49,7 @@ export const HomeView = () => {
 const styles = StyleSheet.create({
   container: {
     marginTop: 20,
+    alignItems: "center",
   },
   input: {
     textAlign: "center",
@@ -60,5 +61,13 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
+  },
+  wrapperMovies: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    paddingVertical: 20,
+    marginHorizontal: 20,
   },
 });

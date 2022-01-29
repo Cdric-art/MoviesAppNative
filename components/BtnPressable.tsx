@@ -34,6 +34,8 @@ const styles = StyleSheet.create({
   button: {
     borderBottomLeftRadius: 12,
     borderBottomRightRadius: 12,
+    width: 200,
+    marginBottom: 30,
   },
   text: {
     textAlign: "center",
